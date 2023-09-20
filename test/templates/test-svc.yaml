@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bgd
+  labels:
+    app: bgd
+  {{- include "test.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.bgd.type }}
+  selector:
+    app: bgd
+  {{- include "test.selectorLabels" . | nindent 4 }}
+  ports:
+	{{- .Values.bgd.ports | toYaml | nindent 2 -}}

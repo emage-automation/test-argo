@@ -1,0 +1,12 @@
+bgd:
+  bgd:
+    image:
+      repository: quay.io/redhatworkshops/bgd
+      tag: latest
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  replicas: 1
+  type: ClusterIP
+kubernetesClusterDomain: cluster.local

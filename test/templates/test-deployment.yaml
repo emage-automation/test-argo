@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bgd
+  labels:
+    app: bgd
+  {{- include "test.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.bgd.replicas }}
+  selector:
+    matchLabels:
+      app: bgd
+    {{- include "test.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: bgd
+      {{- include "test.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.bgd.bgd.image.repository }}:{{ .Values.bgd.bgd.image.tag | default
+          .Chart.AppVersion }}
+        name: bgd
+        resources: {}

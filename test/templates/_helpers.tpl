@@ -33,14 +33,14 @@ Create chart name and version as used by the chart label.
 {{/*
 Common labels
 */}}
-{{- define "test.labels" -}}
-helm.sh/chart: {{ include "test.chart" . }}
-{{ include "test.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
+#{{- define "test.labels" -}}
+#helm.sh/chart: {{ include "test.chart" . }}
+#{{ include "test.selectorLabels" . }}
+#{{- if .Chart.AppVersion }}
+#app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+#{{- end }}
+#app.kubernetes.io/managed-by: {{ .Release.Service }}
+#{{- end }}
 
 {{/*
 Selector labels

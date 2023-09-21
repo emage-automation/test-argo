@@ -4,18 +4,15 @@ metadata:
   name: bgd
   labels:
     app: bgd
-  {{- include "test.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.bgd.replicas }}
   selector:
     matchLabels:
       app: bgd
-    {{- include "test.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
         app: bgd
-      {{- include "test.selectorLabels" . | nindent 8 }}
     spec:
       containers:
       - env:
